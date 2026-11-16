@@ -1,0 +1,6 @@
+/strangler-demo-legacy-1 image=sha256:d87aab4e7274adcbfea71be7742cbad87fff42d6f0ead4aa8f8ee5255f553a9b status=running started=2026-11-15T16:28:47.268069034Z
+/strangler-demo-gateway-1 image=sha256:7986efa85e0b1c2df98f2ecabd3615b4cfa467fa3e42701ca809b51ac0c16294 status=running started=2026-11-15T16:29:15.418679557Z
+/strangler-demo-catalog-1 image=sha256:8a8db2d695eb31b30c65d6cb079ffbda72fe9902da9e0601a5a8f49186568e79 status=running started=2026-11-15T16:28:54.836988036Z
+/strangler-demo-inventory-1 image=sha256:26684b2ea66ea83c9de91531f2f1e517902b57627b03dcf7a7a9e850b3c4f41b status=running started=2026-11-15T16:29:01.102817554Z
+/strangler-demo-order-1 image=sha256:1aced202c97522fad83be5f42bd4906df0e61afeff95ad9a2aa72342e8ccc9bd status=running started=2026-11-15T16:29:11.392721144Z
+/strangler-demo-payment-1 image=sha256:57cb350211bd8d0332b5d88971f4f97fbc7558dedcc71f61b3bdf8f3e0b7cdce status=running started=2026-11-15T16:29:06.362037448Z

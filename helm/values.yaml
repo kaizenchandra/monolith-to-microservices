@@ -1,0 +1,10 @@
+imageTag: local
+registry: strangler
+services:
+  legacy: { port: 8081, replicas: 2 }
+  gateway: { port: 8082, replicas: 2 }
+  catalog: { port: 8083, replicas: 2 }
+  inventory: { port: 8084, replicas: 2 }
+  order: { port: 8085, replicas: 2 }
+  payment: { port: 8086, replicas: 2 }
+host: commerce.example.invalid

@@ -1,0 +1,538 @@
+[INFO] Scanning for projects...
+[INFO] Loaded 24484 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] strangler                                                          [pom]
+[INFO] platform                                                           [jar]
+[INFO] legacy-monolith                                                    [jar]
+[INFO] strangler-gateway                                                  [jar]
+[INFO] catalog-service                                                    [jar]
+[INFO] inventory-service                                                  [jar]
+[INFO] order-service                                                      [jar]
+[INFO] payment-service                                                    [jar]
+[INFO] 
+[INFO] ---------------------------< demo:strangler >---------------------------
+[INFO] Building strangler 1.0.0                                           [1/8]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] ---------------------------< demo:platform >----------------------------
+[INFO] Building platform 1.0.0                                            [2/8]
+[INFO]   from platform/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Loaded 24484 auto-discovered prefixes for remote repository maven-central (prefixes-maven-central.txt)
+[WARNING] Could not transfer metadata /.meta/prefixes.txt from/to flyway-community-db-support (https://maven.pkg.github.com/flyway/flyway-community-db-support): HTTP Status: 401
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ platform ---
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/platform/src/main/resources
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/platform/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ platform ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 5 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ platform ---
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/platform/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ platform ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ platform ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ platform ---
+[INFO] Building jar: /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/platform/target/platform-1.0.0.jar
+[INFO] 
+[INFO] ------------------------< demo:legacy-monolith >------------------------
+[INFO] Building legacy-monolith 1.0.0                                     [3/8]
+[INFO]   from legacy-monolith/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ legacy-monolith ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ legacy-monolith ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ legacy-monolith ---
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/legacy-monolith/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ legacy-monolith ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
+[WARNING] /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/legacy-monolith/src/test/java/demo/legacymonolith/LegacyIntegrationTest.java:[27,48] org.springframework.boot.test.mock.mockito.MockBean in org.springframework.boot.test.mock.mockito has been deprecated and marked for removal
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ legacy-monolith ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running demo.legacymonolith.LegacyFenceTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/MWGBH/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.595 s -- in demo.legacymonolith.LegacyFenceTest
+[INFO] Running demo.legacymonolith.LegacyIntegrationTest
+21:48:52.022 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+21:48:52.027 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+21:48:52.042 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+21:48:52.351 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+21:48:52.815 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Environment variables, system properties and defaults. Resolved dockerHost=unix:///Users/MWGBH/.orbstack/run/docker.sock
+21:48:52.817 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+21:48:52.841 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: OrbStack
+  Total Memory: 8997 MB
+21:48:54.617 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+21:48:55.787 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 75d34b34a8c5060f881177edb045319fd1bc1999c9eddf0752b607edc152391b
+21:48:56.348 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT1.730084S
+21:48:56.366 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+21:48:56.366 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+21:48:56.367 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+21:48:56.368 [main] INFO tc.postgres:17.6 -- Creating container for image: postgres:17.6
+21:48:56.823 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 is starting: 7cd7735b3086592cc2e06f3354eb6a33331699da38f5055bc9f5f5d041f1c27b
+21:48:59.381 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 started in PT3.013012S
+21:48:59.383 [main] INFO tc.postgres:17.6 -- Container is started (JDBC URL: jdbc:postgresql://localhost:32782/test?loggerLevel=OFF)
+21:48:59.519 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [demo.legacymonolith.LegacyIntegrationTest]: LegacyIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:48:59.697 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration demo.legacymonolith.Application for test class demo.legacymonolith.LegacyIntegrationTest
+{"@timestamp":"2026-11-15T21:49:00.240984+05:30","@version":"1","message":"Starting LegacyIntegrationTest using Java 21.0.13.0.3 with PID 52708 (started by MWGBH in /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/legacy-monolith)","logger_name":"demo.legacymonolith.LegacyIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:00.246889+05:30","@version":"1","message":"No active profile set, falling back to 1 default profile: \"default\"","logger_name":"demo.legacymonolith.LegacyIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.097091+05:30","@version":"1","message":"HikariPool-1 - Starting...","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.302351+05:30","@version":"1","message":"HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@36017835","logger_name":"com.zaxxer.hikari.pool.HikariPool","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.303233+05:30","@version":"1","message":"HikariPool-1 - Start completed.","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.327576+05:30","@version":"1","message":"Database: jdbc:postgresql://localhost:32782/test?loggerLevel=OFF (PostgreSQL 17.6)","logger_name":"org.flywaydb.core.FlywayExecutor","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.374072+05:30","@version":"1","message":"Schema history table \"public\".\"flyway_schema_history\" does not exist yet","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.377618+05:30","@version":"1","message":"Successfully validated 2 migrations (execution time 00:00.020s)","logger_name":"org.flywaydb.core.internal.command.DbValidate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.410051+05:30","@version":"1","message":"Creating Schema History table \"public\".\"flyway_schema_history\" ...","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.465188+05:30","@version":"1","message":"Current version of schema \"public\": << Empty Schema >>","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.48651+05:30","@version":"1","message":"Migrating schema \"public\" to version \"1 - baseline\"","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.549232+05:30","@version":"1","message":"Migrating schema \"public\" to version \"2 - event projections\"","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:02.570384+05:30","@version":"1","message":"Successfully applied 2 migrations to schema \"public\", now at version v2 (execution time 00:00.055s)","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:03.074676+05:30","@version":"1","message":"Global AuthenticationManager configured with UserDetailsService bean with name users","logger_name":"org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:03.409922+05:30","@version":"1","message":"Exposing 1 endpoint beneath base path '/actuator'","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:04.20939+05:30","@version":"1","message":"Started LegacyIntegrationTest in 4.36 seconds (process running for 14.721)","logger_name":"demo.legacymonolith.LegacyIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.56 s -- in demo.legacymonolith.LegacyIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ legacy-monolith ---
+[INFO] Building jar: /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/legacy-monolith/target/legacy-monolith-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ legacy-monolith ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+[INFO] Replacing main artifact /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/legacy-monolith/target/legacy-monolith-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/legacy-monolith/target/legacy-monolith-1.0.0.jar.original
+[INFO] 
+[INFO] -----------------------< demo:strangler-gateway >-----------------------
+[INFO] Building strangler-gateway 1.0.0                                   [4/8]
+[INFO]   from strangler-gateway/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ strangler-gateway ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ strangler-gateway ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ strangler-gateway ---
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/strangler-gateway/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ strangler-gateway ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ strangler-gateway ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ strangler-gateway ---
+[INFO] Building jar: /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/strangler-gateway/target/strangler-gateway-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ strangler-gateway ---
+[INFO] Replacing main artifact /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/strangler-gateway/target/strangler-gateway-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/strangler-gateway/target/strangler-gateway-1.0.0.jar.original
+[INFO] 
+[INFO] ------------------------< demo:catalog-service >------------------------
+[INFO] Building catalog-service 1.0.0                                     [5/8]
+[INFO]   from services/catalog-service/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ catalog-service ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ catalog-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ catalog-service ---
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/catalog-service/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ catalog-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ catalog-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running demo.catalogservice.CatalogIntegrationTest
+21:49:08.000 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+21:49:08.002 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+21:49:08.040 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+21:49:08.273 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+21:49:08.553 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Environment variables, system properties and defaults. Resolved dockerHost=unix:///Users/MWGBH/.orbstack/run/docker.sock
+21:49:08.555 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+21:49:08.580 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: OrbStack
+  Total Memory: 8997 MB
+21:49:10.067 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+21:49:10.694 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 47485a839a24a5150719c1432e5f2d161151697504e3968bb3c099ae5f11d2c6
+21:49:11.219 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT1.151951S
+21:49:11.234 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+21:49:11.234 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+21:49:11.234 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+21:49:11.235 [main] INFO tc.postgres:17.6 -- Creating container for image: postgres:17.6
+21:49:11.541 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 is starting: 2a2eab811c91d15bd468f0671988ed77de5e1fad2206b4235c7438c5fb008263
+21:49:12.488 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 started in PT1.25339S
+21:49:12.489 [main] INFO tc.postgres:17.6 -- Container is started (JDBC URL: jdbc:postgresql://localhost:32784/test?loggerLevel=OFF)
+21:49:12.586 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [demo.catalogservice.CatalogIntegrationTest]: CatalogIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:49:12.746 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration demo.catalogservice.Application for test class demo.catalogservice.CatalogIntegrationTest
+{"@timestamp":"2026-11-15T21:49:13.510603+05:30","@version":"1","message":"Starting CatalogIntegrationTest using Java 21.0.13.0.3 with PID 52741 (started by MWGBH in /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/catalog-service)","logger_name":"demo.catalogservice.CatalogIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:13.523721+05:30","@version":"1","message":"No active profile set, falling back to 1 default profile: \"default\"","logger_name":"demo.catalogservice.CatalogIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:15.876373+05:30","@version":"1","message":"HikariPool-1 - Starting...","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.066568+05:30","@version":"1","message":"HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@703cb756","logger_name":"com.zaxxer.hikari.pool.HikariPool","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.068979+05:30","@version":"1","message":"HikariPool-1 - Start completed.","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.133168+05:30","@version":"1","message":"Database: jdbc:postgresql://localhost:32784/test?loggerLevel=OFF (PostgreSQL 17.6)","logger_name":"org.flywaydb.core.FlywayExecutor","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.223698+05:30","@version":"1","message":"Schema history table \"public\".\"flyway_schema_history\" does not exist yet","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.23768+05:30","@version":"1","message":"Successfully validated 1 migration (execution time 00:00.052s)","logger_name":"org.flywaydb.core.internal.command.DbValidate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.334694+05:30","@version":"1","message":"Creating Schema History table \"public\".\"flyway_schema_history\" ...","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.389571+05:30","@version":"1","message":"Current version of schema \"public\": << Empty Schema >>","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.403094+05:30","@version":"1","message":"Migrating schema \"public\" to version \"1 - catalog\"","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:16.440653+05:30","@version":"1","message":"Successfully applied 1 migration to schema \"public\", now at version v1 (execution time 00:00.017s)","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:17.412388+05:30","@version":"1","message":"Global AuthenticationManager configured with UserDetailsService bean with name users","logger_name":"org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:17.732644+05:30","@version":"1","message":"Exposing 1 endpoint beneath base path '/actuator'","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:18.35476+05:30","@version":"1","message":"Initializing Spring TestDispatcherServlet ''","logger_name":"org.springframework.boot.test.mock.web.SpringBootMockServletContext","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:18.355043+05:30","@version":"1","message":"Initializing Servlet ''","logger_name":"org.springframework.test.web.servlet.TestDispatcherServlet","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:18.358075+05:30","@version":"1","message":"Completed initialization in 2 ms","logger_name":"org.springframework.test.web.servlet.TestDispatcherServlet","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:18.465779+05:30","@version":"1","message":"Started CatalogIntegrationTest in 5.556 seconds (process running for 11.388)","logger_name":"demo.catalogservice.CatalogIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/MWGBH/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+{"@timestamp":"2026-11-15T21:49:19.913069+05:30","@version":"1","message":"Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Missing creator property 'price_cents' (index 2); `DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES` enabled]","logger_name":"org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver","thread_name":"main","level":"WARN","level_value":30000,"traceId":"318fdafbbedb1b4bb806fbad22a5fc33","spanId":"432661bcdcd9d51b","correlationId":"31b04c3b-9bcc-4b39-b321-84e951047534"}
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.72 s -- in demo.catalogservice.CatalogIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ catalog-service ---
+[INFO] Building jar: /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/catalog-service/target/catalog-service-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ catalog-service ---
+[INFO] Replacing main artifact /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/catalog-service/target/catalog-service-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/catalog-service/target/catalog-service-1.0.0.jar.original
+[INFO] 
+[INFO] -----------------------< demo:inventory-service >-----------------------
+[INFO] Building inventory-service 1.0.0                                   [6/8]
+[INFO]   from services/inventory-service/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ inventory-service ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ inventory-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ inventory-service ---
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/inventory-service/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ inventory-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ inventory-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running demo.inventoryservice.InventoryIntegrationTest
+21:49:22.549 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+21:49:22.552 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+21:49:22.586 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+21:49:22.809 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+21:49:23.266 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Environment variables, system properties and defaults. Resolved dockerHost=unix:///Users/MWGBH/.orbstack/run/docker.sock
+21:49:23.268 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+21:49:23.288 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: OrbStack
+  Total Memory: 8997 MB
+21:49:26.665 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+21:49:26.987 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 882659e246ede32c34c79bf066eab31fa2dfd7023092e69113514b0f5d0bfedb
+21:49:27.359 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.69399S
+21:49:27.375 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+21:49:27.375 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+21:49:27.376 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+21:49:27.378 [main] INFO tc.postgres:17.6 -- Creating container for image: postgres:17.6
+21:49:27.636 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 is starting: 4fa941d0f96a3336ba45637355e911ceb9586405dd1e5dcb9979fdbb30133b5a
+21:49:28.964 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 started in PT1.586887S
+21:49:28.966 [main] INFO tc.postgres:17.6 -- Container is started (JDBC URL: jdbc:postgresql://localhost:32788/test?loggerLevel=OFF)
+21:49:29.043 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [demo.inventoryservice.InventoryIntegrationTest]: InventoryIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:49:29.173 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration demo.inventoryservice.Application for test class demo.inventoryservice.InventoryIntegrationTest
+{"@timestamp":"2026-11-15T21:49:29.713427+05:30","@version":"1","message":"Starting InventoryIntegrationTest using Java 21.0.13.0.3 with PID 52798 (started by MWGBH in /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/inventory-service)","logger_name":"demo.inventoryservice.InventoryIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:29.726899+05:30","@version":"1","message":"No active profile set, falling back to 1 default profile: \"default\"","logger_name":"demo.inventoryservice.InventoryIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:31.715626+05:30","@version":"1","message":"HikariPool-1 - Starting...","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:31.905054+05:30","@version":"1","message":"HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3aab42d6","logger_name":"com.zaxxer.hikari.pool.HikariPool","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:31.908298+05:30","@version":"1","message":"HikariPool-1 - Start completed.","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:31.945765+05:30","@version":"1","message":"Database: jdbc:postgresql://localhost:32788/test?loggerLevel=OFF (PostgreSQL 17.6)","logger_name":"org.flywaydb.core.FlywayExecutor","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:32.008978+05:30","@version":"1","message":"Schema history table \"public\".\"flyway_schema_history\" does not exist yet","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:32.01389+05:30","@version":"1","message":"Successfully validated 1 migration (execution time 00:00.020s)","logger_name":"org.flywaydb.core.internal.command.DbValidate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:32.034298+05:30","@version":"1","message":"Creating Schema History table \"public\".\"flyway_schema_history\" ...","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:32.109217+05:30","@version":"1","message":"Current version of schema \"public\": << Empty Schema >>","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:32.134882+05:30","@version":"1","message":"Migrating schema \"public\" to version \"1 - inventory\"","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:32.218508+05:30","@version":"1","message":"Successfully applied 1 migration to schema \"public\", now at version v1 (execution time 00:00.058s)","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:33.286112+05:30","@version":"1","message":"Global AuthenticationManager configured with UserDetailsService bean with name users","logger_name":"org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:33.530107+05:30","@version":"1","message":"Exposing 1 endpoint beneath base path '/actuator'","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:34.087632+05:30","@version":"1","message":"Started InventoryIntegrationTest in 4.724 seconds (process running for 12.235)","logger_name":"demo.inventoryservice.InventoryIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/MWGBH/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.61 s -- in demo.inventoryservice.InventoryIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ inventory-service ---
+[INFO] Building jar: /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/inventory-service/target/inventory-service-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ inventory-service ---
+[INFO] Replacing main artifact /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/inventory-service/target/inventory-service-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/inventory-service/target/inventory-service-1.0.0.jar.original
+[INFO] 
+[INFO] -------------------------< demo:order-service >-------------------------
+[INFO] Building order-service 1.0.0                                       [7/8]
+[INFO]   from services/order-service/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ order-service ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ order-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 3 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ order-service ---
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/order-service/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ order-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ order-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running demo.orderservice.RollbackCatalogPortTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/MWGBH/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.575 s -- in demo.orderservice.RollbackCatalogPortTest
+[INFO] Running demo.orderservice.OrderContractTest
+21:49:36.818 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+21:49:36.820 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+21:49:36.825 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+21:49:36.937 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+21:49:37.116 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Environment variables, system properties and defaults. Resolved dockerHost=unix:///Users/MWGBH/.orbstack/run/docker.sock
+21:49:37.117 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+21:49:37.128 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: OrbStack
+  Total Memory: 8997 MB
+21:49:38.044 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+21:49:38.189 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 0f216688f1f0e7873b7548688af03a193ec82980c42654b4491d7a9e06b7e641
+21:49:38.362 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.318277S
+21:49:38.368 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+21:49:38.368 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+21:49:38.369 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+21:49:38.369 [main] INFO tc.postgres:17.6 -- Creating container for image: postgres:17.6
+21:49:38.478 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 is starting: 6e0c9f3e141d0d9c68962f5f1796d7480248962c652a31d5fdc45eb491e39306
+21:49:39.636 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 started in PT1.266575S
+21:49:39.636 [main] INFO tc.postgres:17.6 -- Container is started (JDBC URL: jdbc:postgresql://localhost:32790/test?loggerLevel=OFF)
+21:49:39.671 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [demo.orderservice.OrderContractTest]: OrderContractTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:49:39.718 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration demo.orderservice.Application for test class demo.orderservice.OrderContractTest
+{"@timestamp":"2026-11-15T21:49:40.033235+05:30","@version":"1","message":"Starting OrderContractTest using Java 21.0.13.0.3 with PID 52837 (started by MWGBH in /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/order-service)","logger_name":"demo.orderservice.OrderContractTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:40.04377+05:30","@version":"1","message":"No active profile set, falling back to 1 default profile: \"default\"","logger_name":"demo.orderservice.OrderContractTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:40.861759+05:30","@version":"1","message":"HikariPool-1 - Starting...","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:40.961217+05:30","@version":"1","message":"HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1e9f6095","logger_name":"com.zaxxer.hikari.pool.HikariPool","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:40.961996+05:30","@version":"1","message":"HikariPool-1 - Start completed.","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:40.978711+05:30","@version":"1","message":"Database: jdbc:postgresql://localhost:32790/test?loggerLevel=OFF (PostgreSQL 17.6)","logger_name":"org.flywaydb.core.FlywayExecutor","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.004046+05:30","@version":"1","message":"Schema history table \"public\".\"flyway_schema_history\" does not exist yet","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.005707+05:30","@version":"1","message":"Successfully validated 2 migrations (execution time 00:00.007s)","logger_name":"org.flywaydb.core.internal.command.DbValidate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.012181+05:30","@version":"1","message":"Creating Schema History table \"public\".\"flyway_schema_history\" ...","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.077448+05:30","@version":"1","message":"Current version of schema \"public\": << Empty Schema >>","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.084909+05:30","@version":"1","message":"Migrating schema \"public\" to version \"1 - order\"","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.100841+05:30","@version":"1","message":"Migrating schema \"public\" to version \"2 - zero value checkout\"","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.113339+05:30","@version":"1","message":"Successfully applied 2 migrations to schema \"public\", now at version v2 (execution time 00:00.012s)","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.59512+05:30","@version":"1","message":"Global AuthenticationManager configured with UserDetailsService bean with name users","logger_name":"org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.718499+05:30","@version":"1","message":"Exposing 1 endpoint beneath base path '/actuator'","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.935206+05:30","@version":"1","message":"Initializing Spring TestDispatcherServlet ''","logger_name":"org.springframework.boot.test.mock.web.SpringBootMockServletContext","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.93552+05:30","@version":"1","message":"Initializing Servlet ''","logger_name":"org.springframework.test.web.servlet.TestDispatcherServlet","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.936301+05:30","@version":"1","message":"Completed initialization in 1 ms","logger_name":"org.springframework.test.web.servlet.TestDispatcherServlet","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:41.984934+05:30","@version":"1","message":"Started OrderContractTest in 2.206 seconds (process running for 6.065)","logger_name":"demo.orderservice.OrderContractTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:42.077882+05:30","@version":"1","message":"Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Missing creator property 'id' (index 0); `DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES` enabled]","logger_name":"org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver","thread_name":"main","level":"WARN","level_value":30000,"traceId":"88c7f8399ea934d9f60bafc29e2885dd","spanId":"101f1385bf871ce3","correlationId":"763364f7-478c-4e5d-8b78-5e70c1aa5ffe"}
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.567 s -- in demo.orderservice.OrderContractTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ order-service ---
+[INFO] Building jar: /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/order-service/target/order-service-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ order-service ---
+[INFO] Replacing main artifact /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/order-service/target/order-service-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/order-service/target/order-service-1.0.0.jar.original
+[INFO] 
+[INFO] ------------------------< demo:payment-service >------------------------
+[INFO] Building payment-service 1.0.0                                     [8/8]
+[INFO]   from services/payment-service/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ payment-service ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ payment-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ payment-service ---
+[INFO] skip non existing resourceDirectory /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/payment-service/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ payment-service ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ payment-service ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running demo.paymentservice.PaymentIntegrationTest
+21:49:43.325 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+21:49:43.327 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+21:49:43.343 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 1.21.4
+21:49:43.424 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+21:49:43.536 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Environment variables, system properties and defaults. Resolved dockerHost=unix:///Users/MWGBH/.orbstack/run/docker.sock
+21:49:43.537 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+21:49:43.547 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: OrbStack
+  Total Memory: 8997 MB
+21:49:44.098 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Creating container for image: testcontainers/ryuk:0.12.0
+21:49:44.181 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 is starting: 2974da5e26f2577da140862f809e2fd920b7fd6bc55930d10ef823c6cb442ba0
+21:49:44.337 [main] INFO tc.testcontainers/ryuk:0.12.0 -- Container testcontainers/ryuk:0.12.0 started in PT0.238608S
+21:49:44.341 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+21:49:44.341 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+21:49:44.341 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+21:49:44.342 [main] INFO tc.postgres:17.6 -- Creating container for image: postgres:17.6
+21:49:44.461 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 is starting: 6d798128d78b9866f7f51787f37903abc9a370f9701536a7f9047475c9797387
+21:49:45.589 [main] INFO tc.postgres:17.6 -- Container postgres:17.6 started in PT1.247244S
+21:49:45.590 [main] INFO tc.postgres:17.6 -- Container is started (JDBC URL: jdbc:postgresql://localhost:32792/test?loggerLevel=OFF)
+21:49:45.630 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [demo.paymentservice.PaymentIntegrationTest]: PaymentIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:49:45.675 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration demo.paymentservice.Application for test class demo.paymentservice.PaymentIntegrationTest
+{"@timestamp":"2026-11-15T21:49:45.883729+05:30","@version":"1","message":"Starting PaymentIntegrationTest using Java 21.0.13.0.3 with PID 52842 (started by MWGBH in /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/payment-service)","logger_name":"demo.paymentservice.PaymentIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:45.8893+05:30","@version":"1","message":"No active profile set, falling back to 1 default profile: \"default\"","logger_name":"demo.paymentservice.PaymentIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.580977+05:30","@version":"1","message":"HikariPool-1 - Starting...","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.655086+05:30","@version":"1","message":"HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4c164f81","logger_name":"com.zaxxer.hikari.pool.HikariPool","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.655665+05:30","@version":"1","message":"HikariPool-1 - Start completed.","logger_name":"com.zaxxer.hikari.HikariDataSource","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.667503+05:30","@version":"1","message":"Database: jdbc:postgresql://localhost:32792/test?loggerLevel=OFF (PostgreSQL 17.6)","logger_name":"org.flywaydb.core.FlywayExecutor","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.689212+05:30","@version":"1","message":"Schema history table \"public\".\"flyway_schema_history\" does not exist yet","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.690895+05:30","@version":"1","message":"Successfully validated 2 migrations (execution time 00:00.007s)","logger_name":"org.flywaydb.core.internal.command.DbValidate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.702462+05:30","@version":"1","message":"Creating Schema History table \"public\".\"flyway_schema_history\" ...","logger_name":"org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.748282+05:30","@version":"1","message":"Current version of schema \"public\": << Empty Schema >>","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.753037+05:30","@version":"1","message":"Migrating schema \"public\" to version \"1 - payment\"","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.764355+05:30","@version":"1","message":"Migrating schema \"public\" to version \"2 - zero value authorization\"","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:46.770072+05:30","@version":"1","message":"Successfully applied 2 migrations to schema \"public\", now at version v2 (execution time 00:00.007s)","logger_name":"org.flywaydb.core.internal.command.DbMigrate","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:47.196853+05:30","@version":"1","message":"Global AuthenticationManager configured with UserDetailsService bean with name users","logger_name":"org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:47.305234+05:30","@version":"1","message":"Exposing 1 endpoint beneath base path '/actuator'","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:47.499557+05:30","@version":"1","message":"Initializing Spring TestDispatcherServlet ''","logger_name":"org.springframework.boot.test.mock.web.SpringBootMockServletContext","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:47.499795+05:30","@version":"1","message":"Initializing Servlet ''","logger_name":"org.springframework.test.web.servlet.TestDispatcherServlet","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:47.500354+05:30","@version":"1","message":"Completed initialization in 1 ms","logger_name":"org.springframework.test.web.servlet.TestDispatcherServlet","thread_name":"main","level":"INFO","level_value":20000}
+{"@timestamp":"2026-11-15T21:49:47.531374+05:30","@version":"1","message":"Started PaymentIntegrationTest in 1.803 seconds (process running for 4.456)","logger_name":"demo.paymentservice.PaymentIntegrationTest","thread_name":"main","level":"INFO","level_value":20000}
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/MWGBH/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+{"@timestamp":"2026-11-15T21:49:47.944831+05:30","@version":"1","message":"Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Missing creator property 'amount_cents' (index 1); `DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES` enabled]","logger_name":"org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver","thread_name":"main","level":"WARN","level_value":30000,"traceId":"35f4b922c5b5b5218d44a40033aa5a77","spanId":"9ed022782e5e4caa","correlationId":"42d8e140-ede2-4db7-b0ac-1d7da3f4b1f0"}
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.988 s -- in demo.paymentservice.PaymentIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ payment-service ---
+[INFO] Building jar: /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/payment-service/target/payment-service-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ payment-service ---
+[INFO] Replacing main artifact /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/payment-service/target/payment-service-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /Volumes/KaizenChandra/Workspace/01-Interview/system-design/system-design/monolith-to-microservices/services/payment-service/target/payment-service-1.0.0.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for strangler 1.0.0:
+[INFO] 
+[INFO] strangler .......................................... SUCCESS [  0.001 s]
+[INFO] platform ........................................... SUCCESS [  3.940 s]
+[INFO] legacy-monolith .................................... SUCCESS [ 18.064 s]
+[INFO] strangler-gateway .................................. SUCCESS [  0.559 s]
+[INFO] catalog-service .................................... SUCCESS [ 14.847 s]
+[INFO] inventory-service .................................. SUCCESS [ 14.334 s]
+[INFO] order-service ...................................... SUCCESS [  7.253 s]
+[INFO] payment-service .................................... SUCCESS [  5.976 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:05 min
+[INFO] Finished at: 2026-11-15T21:49:48+05:30
+[INFO] ------------------------------------------------------------------------

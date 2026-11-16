@@ -1,0 +1,14 @@
+PASS all service outboxes drained
+PASS consumer committed through every captured broker partition including replay
+PASS all checkout workflows terminal
+PASS one matching authorization per confirmed order
+PASS modern financial projections match orders exactly
+PASS each confirmed event applied once in inbox
+PASS exactly one shipments intent per confirmed or historical order
+PASS exactly one notifications intent per confirmed or historical order
+PASS report count and monetary total reconcile
+PASS inventory quantity conserved across ownership transfer
+PASS no orphan or duplicate active reservations
+PASS catalog reconciliation remains exact after recovery
+PASS only modern capabilities authoritative
+PASS new-service-only catalog routing preserves contract

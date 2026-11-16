@@ -1,0 +1,14 @@
+groups:
+  - name: migration
+    rules:
+      - alert: ShadowCorrectnessMismatch
+        expr: increase(strangler_shadow_total{result="mismatch"}[5m]) > 0
+        labels: { severity: critical }
+        annotations: { summary: "Stop canary promotion and investigate catalog parity" }
+      - alert: ShadowCoverageLost
+        expr: sum(increase(strangler_shadow_total{result=~"error|dropped"}[5m])) > 0
+        annotations: { summary: "Shadow sample incomplete; do not count as parity" }
+      - alert: OutboxPublishFailures
+        expr: increase(outbox_publish_failures_total[5m]) > 0
+        for: 1m
+        annotations: { summary: "Inspect broker and durable outbox backlog" }

@@ -1,0 +1,514 @@
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: catalog }
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: { app: catalog }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: gateway }
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: { app: gateway }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: inventory }
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: { app: inventory }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: legacy }
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: { app: legacy }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: order }
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: { app: order }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: payment }
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: { app: payment }
+
+---
+# Source: strangler/templates/config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata: { name: commerce }
+data:
+  LEGACY_URL: http://legacy:8081
+  CATALOG_URL: http://catalog:8083
+  INVENTORY_URL: http://inventory:8084
+  ORDER_URL: http://order:8085
+  PAYMENT_URL: http://payment:8086
+  MANAGEMENT_ENDPOINT_HEALTH_GROUP_READINESS_INCLUDE: readinessState,db
+  KAFKA_SERVERS: kafka:9092
+  OTEL_ENDPOINT: http://otel-collector:4318/v1/traces
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: v1
+kind: Service
+metadata: { name: catalog }
+spec:
+  selector: { app: catalog }
+  ports: [ { port: 8083, targetPort: 8083 } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: v1
+kind: Service
+metadata: { name: gateway }
+spec:
+  selector: { app: gateway }
+  ports: [ { port: 8082, targetPort: 8082 } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: v1
+kind: Service
+metadata: { name: inventory }
+spec:
+  selector: { app: inventory }
+  ports: [ { port: 8084, targetPort: 8084 } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: v1
+kind: Service
+metadata: { name: legacy }
+spec:
+  selector: { app: legacy }
+  ports: [ { port: 8081, targetPort: 8081 } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: v1
+kind: Service
+metadata: { name: order }
+spec:
+  selector: { app: order }
+  ports: [ { port: 8085, targetPort: 8085 } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: v1
+kind: Service
+metadata: { name: payment }
+spec:
+  selector: { app: payment }
+  ports: [ { port: 8086, targetPort: 8086 } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: catalog }
+  strategy:
+    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }
+  template:
+    metadata:
+      labels: { app: catalog }
+    spec:
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, fsGroup: 10001 }
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: app
+          image: strangler/catalog:local
+          ports: [ { containerPort: 8083 } ]
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: [ ALL ] } }
+          volumeMounts: [ { name: tmp, mountPath: /tmp } ]
+          envFrom:
+            - configMapRef: { name: commerce }
+            - secretRef: { name: catalog-runtime }
+          env:
+            - { name: SPRING_PROFILES_ACTIVE, value: production }
+            - name: OUTBOX_ENABLED
+              value: "true"
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { cpu: '2', memory: 1Gi }
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: 8083 }
+            initialDelaySeconds: 20
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8083 }
+            initialDelaySeconds: 45
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8083 }
+            failureThreshold: 60
+            periodSeconds: 5
+      volumes: [ { name: tmp, emptyDir: { } } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: gateway }
+  strategy:
+    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }
+  template:
+    metadata:
+      labels: { app: gateway }
+    spec:
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, fsGroup: 10001 }
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: app
+          image: strangler/gateway:local
+          ports: [ { containerPort: 8082 } ]
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: [ ALL ] } }
+          volumeMounts: [ { name: tmp, mountPath: /tmp } ]
+          envFrom:
+            - configMapRef: { name: commerce }
+            - secretRef: { name: gateway-runtime }
+          env:
+            - { name: SPRING_PROFILES_ACTIVE, value: production }
+            - name: OUTBOX_ENABLED
+              value: "false"
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { cpu: '2', memory: 1Gi }
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: 8082 }
+            initialDelaySeconds: 20
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8082 }
+            initialDelaySeconds: 45
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8082 }
+            failureThreshold: 60
+            periodSeconds: 5
+      volumes: [ { name: tmp, emptyDir: { } } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: inventory }
+  strategy:
+    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }
+  template:
+    metadata:
+      labels: { app: inventory }
+    spec:
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, fsGroup: 10001 }
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: app
+          image: strangler/inventory:local
+          ports: [ { containerPort: 8084 } ]
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: [ ALL ] } }
+          volumeMounts: [ { name: tmp, mountPath: /tmp } ]
+          envFrom:
+            - configMapRef: { name: commerce }
+            - secretRef: { name: inventory-runtime }
+          env:
+            - { name: SPRING_PROFILES_ACTIVE, value: production }
+            - name: OUTBOX_ENABLED
+              value: "true"
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { cpu: '2', memory: 1Gi }
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: 8084 }
+            initialDelaySeconds: 20
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8084 }
+            initialDelaySeconds: 45
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8084 }
+            failureThreshold: 60
+            periodSeconds: 5
+      volumes: [ { name: tmp, emptyDir: { } } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: legacy
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: legacy }
+  strategy:
+    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }
+  template:
+    metadata:
+      labels: { app: legacy }
+    spec:
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, fsGroup: 10001 }
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: app
+          image: strangler/legacy:local
+          ports: [ { containerPort: 8081 } ]
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: [ ALL ] } }
+          volumeMounts: [ { name: tmp, mountPath: /tmp } ]
+          envFrom:
+            - configMapRef: { name: commerce }
+            - secretRef: { name: legacy-runtime }
+          env:
+            - { name: SPRING_PROFILES_ACTIVE, value: production }
+            - name: OUTBOX_ENABLED
+              value: "false"
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { cpu: '2', memory: 1Gi }
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: 8081 }
+            initialDelaySeconds: 20
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8081 }
+            initialDelaySeconds: 45
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8081 }
+            failureThreshold: 60
+            periodSeconds: 5
+      volumes: [ { name: tmp, emptyDir: { } } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: order }
+  strategy:
+    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }
+  template:
+    metadata:
+      labels: { app: order }
+    spec:
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, fsGroup: 10001 }
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: app
+          image: strangler/order:local
+          ports: [ { containerPort: 8085 } ]
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: [ ALL ] } }
+          volumeMounts: [ { name: tmp, mountPath: /tmp } ]
+          envFrom:
+            - configMapRef: { name: commerce }
+            - secretRef: { name: order-runtime }
+          env:
+            - { name: SPRING_PROFILES_ACTIVE, value: production }
+            - name: OUTBOX_ENABLED
+              value: "true"
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { cpu: '2', memory: 1Gi }
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: 8085 }
+            initialDelaySeconds: 20
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8085 }
+            initialDelaySeconds: 45
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8085 }
+            failureThreshold: 60
+            periodSeconds: 5
+      volumes: [ { name: tmp, emptyDir: { } } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: payment }
+  strategy:
+    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }
+  template:
+    metadata:
+      labels: { app: payment }
+    spec:
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, fsGroup: 10001 }
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: app
+          image: strangler/payment:local
+          ports: [ { containerPort: 8086 } ]
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: [ ALL ] } }
+          volumeMounts: [ { name: tmp, mountPath: /tmp } ]
+          envFrom:
+            - configMapRef: { name: commerce }
+            - secretRef: { name: payment-runtime }
+          env:
+            - { name: SPRING_PROFILES_ACTIVE, value: production }
+            - name: OUTBOX_ENABLED
+              value: "true"
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { cpu: '2', memory: 1Gi }
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: 8086 }
+            initialDelaySeconds: 20
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8086 }
+            initialDelaySeconds: 45
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: 8086 }
+            failureThreshold: 60
+            periodSeconds: 5
+      volumes: [ { name: tmp, emptyDir: { } } ]
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: { name: catalog }
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: catalog }
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: { type: Utilization, averageUtilization: 65 }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: { name: gateway }
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: gateway }
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: { type: Utilization, averageUtilization: 65 }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: { name: inventory }
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: inventory }
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: { type: Utilization, averageUtilization: 65 }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: { name: legacy }
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: legacy }
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: { type: Utilization, averageUtilization: 65 }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: { name: order }
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: order }
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: { type: Utilization, averageUtilization: 65 }
+
+---
+# Source: strangler/templates/apps.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: { name: payment }
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: payment }
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: { type: Utilization, averageUtilization: 65 }
+
+---
+# Source: strangler/templates/config.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: { name: commerce }
+spec:
+  tls:
+    - hosts: [ commerce.example.invalid ]
+      secretName: commerce-tls
+  rules:
+    - host: commerce.example.invalid
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway
+                port: { number: 8082 }

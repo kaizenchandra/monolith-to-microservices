@@ -1,0 +1,32 @@
+{
+  "checks": [
+    "all service outboxes drained",
+    "consumer committed through every captured broker partition including replay",
+    "all checkout workflows terminal",
+    "one matching authorization per confirmed order",
+    "modern financial projections match orders exactly",
+    "each confirmed event applied once in inbox",
+    "exactly one shipments intent per confirmed or historical order",
+    "exactly one notifications intent per confirmed or historical order",
+    "report count and monetary total reconcile",
+    "inventory quantity conserved across ownership transfer",
+    "no orphan or duplicate active reservations",
+    "catalog reconciliation remains exact after recovery",
+    "only modern capabilities authoritative",
+    "new-service-only catalog routing preserves contract"
+  ],
+  "count": 14,
+  "broker_end_offsets": {
+    "0": 38
+  },
+  "consumer_committed_offsets": {
+    "0": 38
+  },
+  "modern_confirmed_orders": 5,
+  "historical_orders": 1,
+  "amount_cents_total": 20594,
+  "inventory_conservation": {
+    "1": 9,
+    "2": 100
+  }
+}

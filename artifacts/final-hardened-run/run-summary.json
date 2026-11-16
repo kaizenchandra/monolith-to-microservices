@@ -1,0 +1,19 @@
+{
+  "completed_at": "2026-11-15T16:44:39.078724+00:00",
+  "topology": "Docker Compose: all six application services, isolated PostgreSQL/Kafka and observability stack",
+  "java_version": "21.0.13",
+  "full_maven_verify": "passed",
+  "junit_tests": 14,
+  "migration_assertions": 48,
+  "failure_checks": 6,
+  "postflight_checks": 14,
+  "all_running_jars_match_build": true,
+  "runtime_ports": {
+    "gateway": 28082,
+    "postgres": 55439,
+    "kafka": 59192,
+    "prometheus": 59190,
+    "grafana": 53100
+  },
+  "environment_left_running": true
+}

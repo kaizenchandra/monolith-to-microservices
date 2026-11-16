@@ -1,0 +1,6 @@
+START bootstrap 2026-11-15T16:31:08.837279+00:00
+FINISH {'stage': 'bootstrap', 'command': 'python3 integration-tests/bootstrap.py', 'started_at': '2026-11-15T16:31:08.837279+00:00', 'elapsed_seconds': 0.379, 'exit_code': 0}
+START migration 2026-11-15T16:31:09.217245+00:00
+FINISH {'stage': 'migration', 'command': 'python3 integration-tests/demo.py', 'started_at': '2026-11-15T16:31:09.217245+00:00', 'elapsed_seconds': 42.674, 'exit_code': 0}
+START failures 2026-11-15T16:31:51.893433+00:00
+FINISH {'stage': 'failures', 'command': 'python3 integration-tests/failures.py', 'started_at': '2026-11-15T16:31:51.893433+00:00', 'elapsed_seconds': 32.917, 'exit_code': 0}

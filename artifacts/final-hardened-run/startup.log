@@ -1,0 +1,12 @@
+2026-11-15T16:28:41.002892+00:00 starting legacy
+READY {'service': 'legacy', 'ready_seconds': 12.671}
+2026-11-15T16:28:53.674916+00:00 starting catalog
+READY {'service': 'catalog', 'ready_seconds': 6.433}
+2026-11-15T16:29:00.109055+00:00 starting inventory
+READY {'service': 'inventory', 'ready_seconds': 5.253}
+2026-11-15T16:29:05.363144+00:00 starting payment
+READY {'service': 'payment', 'ready_seconds': 5.206}
+2026-11-15T16:29:10.570296+00:00 starting order
+READY {'service': 'order', 'ready_seconds': 4.043}
+2026-11-15T16:29:14.614069+00:00 starting gateway
+READY {'service': 'gateway', 'ready_seconds': 4.056}

@@ -1,0 +1,74 @@
+{{- range $name, $svc := .Values.services }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $name }}
+spec:
+  replicas: {{ $svc.replicas }}
+  selector:
+    matchLabels: { app: {{ $name }}}
+  strategy:
+    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }
+  template:
+    metadata:
+      labels: { app: {{ $name }}}
+    spec:
+      securityContext: { runAsNonRoot: true, runAsUser: 10001, fsGroup: 10001 }
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: app
+          image: {{ $.Values.registry }}/{{ $name }}:{{ $.Values.imageTag }}
+          ports: [ { containerPort: {{ $svc.port }}} ]
+          securityContext: { allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: { drop: [ ALL ] } }
+          volumeMounts: [ { name: tmp, mountPath: /tmp } ]
+          envFrom:
+            - configMapRef: { name: commerce }
+            - secretRef: { name: {{ $name }}-runtime }
+          env:
+            - { name: SPRING_PROFILES_ACTIVE, value: production }
+            - name: OUTBOX_ENABLED
+              value: {{ ternary "false" "true" (or (eq $name "legacy") (eq $name "gateway")) | quote }}
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { cpu: '2', memory: 1Gi }
+          readinessProbe:
+            httpGet: { path: /actuator/health/readiness, port: {{ $svc.port }}}
+            initialDelaySeconds: 20
+          livenessProbe:
+            httpGet: { path: /actuator/health/liveness, port: {{ $svc.port }}}
+            initialDelaySeconds: 45
+          startupProbe:
+            httpGet: { path: /actuator/health/liveness, port: {{ $svc.port }}}
+            failureThreshold: 60
+            periodSeconds: 5
+      volumes: [ { name: tmp, emptyDir: { } } ]
+---
+apiVersion: v1
+kind: Service
+metadata: { name: {{ $name }}}
+spec:
+  selector: { app: {{ $name }}}
+  ports: [ { port: {{ $svc.port }}, targetPort: {{ $svc.port }}} ]
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata: { name: {{ $name }}}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels: { app: {{ $name }}}
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: { name: {{ $name }}}
+spec:
+  scaleTargetRef: { apiVersion: apps/v1, kind: Deployment, name: {{ $name }}}
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: { type: Utilization, averageUtilization: 65 }
+{{- end }}

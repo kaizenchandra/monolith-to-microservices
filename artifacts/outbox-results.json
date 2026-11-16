@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "catalog commits state and durable event during broker outage",
+    "outbox relay drains after broker restoration",
+    "duplicate event consumed and offset committed",
+    "duplicate OrderConfirmed produces one shipment"
+  ],
+  "count": 4,
+  "topology": "host JVMs + Compose PostgreSQL/Kafka"
+}

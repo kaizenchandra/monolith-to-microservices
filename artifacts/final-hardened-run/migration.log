@@ -1,0 +1,55 @@
+PASS reader cannot write
+PASS reader cannot administer
+PASS missing product contract
+PASS legacy characterization cents
+PASS legacy checkout
+PASS legacy duplicate
+{"capability": "catalog", "source": "legacy", "target": "catalog", "source_digest": "115733397f0b967a70fa7bf7dff7dd78d38550a53324580dca3c80629f9f2627", "target_digest": "115733397f0b967a70fa7bf7dff7dd78d38550a53324580dca3c80629f9f2627", "equal": true, "rows": {"products": 2}, "time": 1794760271.7275689, "price_cents_sum": 14498}
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow preserves response
+PASS shadow parity recorded
+PASS canary 1
+PASS canary 5
+PASS canary 10
+PASS canary 25
+PASS canary 50
+PASS canary 100
+PASS frozen legacy reads never serve stale data
+PASS frozen source rejects catalog writes
+PASS replica rejects competing catalog writes
+PASS stale ownership epoch rejected
+{"capability": "catalog", "source": "legacy", "target": "catalog", "source_digest": "115733397f0b967a70fa7bf7dff7dd78d38550a53324580dca3c80629f9f2627", "target_digest": "115733397f0b967a70fa7bf7dff7dd78d38550a53324580dca3c80629f9f2627", "equal": true, "rows": {"products": 2}, "time": 1794760280.514343, "price_cents_sum": 14498}
+PASS modern write version
+PASS stale write rejected
+{"capability": "catalog", "source": "catalog", "target": "legacy", "source_digest": "eb68dbdb4180b1dbd8023c24e16327cb1382c5648c4d7af097711c6cb72ef4d4", "target_digest": "eb68dbdb4180b1dbd8023c24e16327cb1382c5648c4d7af097711c6cb72ef4d4", "equal": true, "rows": {"products": 2}, "time": 1794760282.451798, "price_cents_sum": 14498}
+PASS reverse sync retains modern write
+{"capability": "catalog", "source": "legacy", "target": "catalog", "source_digest": "eb68dbdb4180b1dbd8023c24e16327cb1382c5648c4d7af097711c6cb72ef4d4", "target_digest": "eb68dbdb4180b1dbd8023c24e16327cb1382c5648c4d7af097711c6cb72ef4d4", "equal": true, "rows": {"products": 2}, "time": 1794760283.412997, "price_cents_sum": 14498}
+{"capability": "inventory", "source": "legacy", "target": "inventory", "source_digest": "96b91d979faaaabca907c0ee78dc34761c8eea216ec759fd84851aa9524362c6", "target_digest": "96b91d979faaaabca907c0ee78dc34761c8eea216ec759fd84851aa9524362c6", "equal": true, "rows": {"stock": 2, "reservations": 0}, "time": 1794760284.625708, "available_sum": 109, "reserved_sum": 0}
+PASS baseline id retained across cutover
+PASS last unit no overselling
+PASS stock nonnegative
+PASS durable saga confirmed
+PASS conflicting duplicate rejected
+PASS saga compensates insufficient inventory
+PASS missing product price rejected
+PASS missing payment amount rejected
+PASS zero-value saga confirmed
+PASS zero authorization idempotent
+PASS conflicting payment amount rejected
+{"capability": "catalog", "source": "catalog", "target": "legacy", "source_digest": "b3e9bef9272e18fcf77151f15ce7f75b3a3b9af5c48a36f25989a33867ee18e8", "target_digest": "b3e9bef9272e18fcf77151f15ce7f75b3a3b9af5c48a36f25989a33867ee18e8", "equal": true, "rows": {"products": 2}, "time": 1794760303.106821, "price_cents_sum": 14498}
+PASS frozen modern replica remains distinct during rollback
+PASS modern checkout uses authoritative legacy price after rollback
+{"capability": "catalog", "source": "legacy", "target": "catalog", "source_digest": "d55f62d88512ac3f1e1de47926b09fd8f2b1e7dc3637f26f2a9d013f8c174c7b", "target_digest": "d55f62d88512ac3f1e1de47926b09fd8f2b1e7dc3637f26f2a9d013f8c174c7b", "equal": true, "rows": {"products": 2}, "time": 1794760310.750458, "price_cents_sum": 14498}

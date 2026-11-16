@@ -1,0 +1,13 @@
+{
+  "capability": "catalog",
+  "source": "legacy",
+  "target": "catalog",
+  "source_digest": "d55f62d88512ac3f1e1de47926b09fd8f2b1e7dc3637f26f2a9d013f8c174c7b",
+  "target_digest": "d55f62d88512ac3f1e1de47926b09fd8f2b1e7dc3637f26f2a9d013f8c174c7b",
+  "equal": true,
+  "rows": {
+    "products": 2
+  },
+  "time": 1794760310.750458,
+  "price_cents_sum": 14498
+}

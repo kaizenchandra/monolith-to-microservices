@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "price_cents",
+    "version",
+    "deleted"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "price_cents": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "deleted": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

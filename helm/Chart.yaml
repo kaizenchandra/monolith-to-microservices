@@ -1,0 +1,4 @@
+apiVersion: v2
+name: strangler
+version: 0.1.0
+description: Migration applications; requires managed databases, IAM, Kafka and TLS ingress

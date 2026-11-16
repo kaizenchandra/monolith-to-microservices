@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 5s
+scrape_configs:
+  - job_name: commerce
+    metrics_path: /actuator/prometheus
+    basic_auth:
+      username: service
+      password: local-only
+    static_configs:
+      - targets: [ legacy:8081, gateway:8082, catalog:8083, inventory:8084, order:8085, payment:8086 ]
+
+rule_files: [ /etc/prometheus/alerts.yml ]

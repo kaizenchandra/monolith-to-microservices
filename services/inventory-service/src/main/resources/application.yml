@@ -1,0 +1,50 @@
+server:
+  port: ${PORT:8084}
+  shutdown: graceful
+spring:
+  jackson:
+    deserialization:
+      fail-on-null-for-primitives: true
+      fail-on-missing-creator-properties: true
+  application:
+    name: inventory-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:55439/inventoryservice}
+    username: ${DB_USER:demo}
+    password: ${DB_PASSWORD:local-only}
+    hikari:
+      maximum-pool-size: 8
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:59092}
+    producer:
+      acks: all
+      properties:
+        enable.idempotence: true
+        max.block.ms: 2000
+        request.timeout.ms: 2000
+        delivery.timeout.ms: 6000
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+management:
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: ${OTEL_ENDPOINT:http://localhost:4318/v1/traces}
+logging:
+  structured:
+    format:
+      console: logstash

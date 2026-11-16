@@ -1,0 +1,58 @@
+[
+  {
+    "name": "demo.legacymonolith.LegacyFenceTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.595"
+  },
+  {
+    "name": "demo.legacymonolith.LegacyIntegrationTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "13.564"
+  },
+  {
+    "name": "demo.paymentservice.PaymentIntegrationTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "4.988"
+  },
+  {
+    "name": "demo.orderservice.OrderContractTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "5.567"
+  },
+  {
+    "name": "demo.orderservice.RollbackCatalogPortTest",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.575"
+  },
+  {
+    "name": "demo.catalogservice.CatalogIntegrationTest",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "12.724"
+  },
+  {
+    "name": "demo.inventoryservice.InventoryIntegrationTest",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "12.614"
+  }
+]

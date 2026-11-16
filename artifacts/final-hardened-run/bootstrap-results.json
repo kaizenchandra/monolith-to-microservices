@@ -1,0 +1,53 @@
+{
+  "bootstrap_version": 1,
+  "services": [
+    {
+      "database": "catalogservice",
+      "owner": "catalogservice_migrator",
+      "runtime_superuser": false,
+      "migrator_superuser": false,
+      "runtime_can_connect": true,
+      "cross_database_connections": 0
+    },
+    {
+      "database": "inventoryservice",
+      "owner": "inventoryservice_migrator",
+      "runtime_superuser": false,
+      "migrator_superuser": false,
+      "runtime_can_connect": true,
+      "cross_database_connections": 0
+    },
+    {
+      "database": "legacymonolith",
+      "owner": "legacymonolith_migrator",
+      "runtime_superuser": false,
+      "migrator_superuser": false,
+      "runtime_can_connect": true,
+      "cross_database_connections": 0
+    },
+    {
+      "database": "orderservice",
+      "owner": "orderservice_migrator",
+      "runtime_superuser": false,
+      "migrator_superuser": false,
+      "runtime_can_connect": true,
+      "cross_database_connections": 0
+    },
+    {
+      "database": "paymentservice",
+      "owner": "paymentservice_migrator",
+      "runtime_superuser": false,
+      "migrator_superuser": false,
+      "runtime_can_connect": true,
+      "cross_database_connections": 0
+    },
+    {
+      "database": "stranglergateway",
+      "owner": "stranglergateway_migrator",
+      "runtime_superuser": false,
+      "migrator_superuser": false,
+      "runtime_can_connect": true,
+      "cross_database_connections": 0
+    }
+  ]
+}

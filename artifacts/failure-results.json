@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "saga resumes after dependency outage and worker restart",
+    "one reservation after replay",
+    "state commits while broker unavailable",
+    "outbox recovers and consumer projects",
+    "duplicate event suppresses duplicate fulfillment",
+    "cutover resumes after source delegation fence"
+  ],
+  "count": 6
+}

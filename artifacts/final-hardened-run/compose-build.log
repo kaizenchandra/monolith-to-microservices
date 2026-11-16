@@ -1,0 +1,186 @@
+ Image strangler/order:local Building 
+ Image strangler/payment:local Building 
+ Image strangler/gateway:local Building 
+ Image strangler/legacy:local Building 
+ Image strangler/catalog:local Building 
+ Image strangler/inventory:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.71kB done
+#1 DONE 0.0s
+
+#2 [catalog internal] load build definition from Dockerfile
+#2 transferring dockerfile: 237B done
+#2 DONE 0.0s
+
+#3 [inventory internal] load build definition from Dockerfile
+#3 transferring dockerfile: 241B done
+#3 DONE 0.0s
+
+#4 [legacy internal] load build definition from Dockerfile
+#4 transferring dockerfile: 228B done
+#4 DONE 0.1s
+
+#5 [gateway internal] load build definition from Dockerfile
+#5 transferring dockerfile: 232B done
+#5 DONE 0.1s
+
+#6 [order internal] load build definition from Dockerfile
+#6 transferring dockerfile: 233B done
+#6 DONE 0.1s
+
+#7 [payment internal] load build definition from Dockerfile
+#7 transferring dockerfile: 237B done
+#7 DONE 0.1s
+
+#8 [payment internal] load metadata for docker.io/library/eclipse-temurin:21-jre
+#8 DONE 0.9s
+
+#9 [gateway internal] load .dockerignore
+#9 transferring context: 73B done
+#9 DONE 0.0s
+
+#10 [payment 1/3] FROM docker.io/library/eclipse-temurin:21-jre@sha256:18bb4a91a3dea3f03ee31d3755af34dfb40f904fc77ab56cdc2f092e32fff9c2
+#10 resolve docker.io/library/eclipse-temurin:21-jre@sha256:18bb4a91a3dea3f03ee31d3755af34dfb40f904fc77ab56cdc2f092e32fff9c2 0.1s done
+#10 DONE 0.1s
+
+#11 [order internal] load build context
+#11 transferring context: 61.12MB 1.3s done
+#11 DONE 1.4s
+
+#12 [catalog 2/3] WORKDIR /app
+#12 CACHED
+
+#13 [inventory internal] load build context
+#13 transferring context: 61.12MB 1.4s done
+#13 DONE 1.4s
+
+#14 [gateway internal] load build context
+#14 transferring context: 61.11MB 1.4s done
+#14 DONE 1.4s
+
+#15 [payment internal] load build context
+#15 transferring context: 61.12MB 1.3s done
+#15 DONE 1.4s
+
+#16 [legacy internal] load build context
+#16 transferring context: 61.13MB 1.3s done
+#16 DONE 1.4s
+
+#17 [catalog internal] load build context
+#17 transferring context: 61.12MB 1.3s done
+#17 DONE 1.4s
+
+#18 [catalog 3/3] COPY services/catalog-service/target/catalog-service-1.0.0.jar app.jar
+#18 ...
+
+#19 [inventory 3/3] COPY services/inventory-service/target/inventory-service-1.0.0.jar app.jar
+#19 DONE 0.5s
+
+#20 [order 3/3] COPY services/order-service/target/order-service-1.0.0.jar app.jar
+#20 DONE 0.5s
+
+#21 [payment 3/3] COPY services/payment-service/target/payment-service-1.0.0.jar app.jar
+#21 DONE 0.5s
+
+#22 [gateway 3/3] COPY strangler-gateway/target/strangler-gateway-1.0.0.jar app.jar
+#22 DONE 0.5s
+
+#23 [legacy 3/3] COPY legacy-monolith/target/legacy-monolith-1.0.0.jar app.jar
+#23 DONE 0.5s
+
+#18 [catalog 3/3] COPY services/catalog-service/target/catalog-service-1.0.0.jar app.jar
+#18 DONE 0.5s
+
+#24 [catalog] exporting to image
+#24 exporting layers
+#24 exporting layers 2.5s done
+#24 exporting manifest sha256:2455d7313f84e51f023f3696c256e6f7c42b4cf3b2b63ab9b1ac9e5565e11760 0.0s done
+#24 exporting config sha256:bcb11af9991af19c9066b6f19b26f53cb4ac64772fbabf1b679cd6aa64471825
+#24 exporting config sha256:bcb11af9991af19c9066b6f19b26f53cb4ac64772fbabf1b679cd6aa64471825 0.0s done
+#24 exporting attestation manifest sha256:ffa3e9cbdbd2e4693ccf01e8932ee180890567d010f9c7319d5f93806b000c57 0.0s done
+#24 exporting manifest list sha256:8a8db2d695eb31b30c65d6cb079ffbda72fe9902da9e0601a5a8f49186568e79
+#24 exporting manifest list sha256:8a8db2d695eb31b30c65d6cb079ffbda72fe9902da9e0601a5a8f49186568e79 0.0s done
+#24 naming to docker.io/strangler/catalog:local done
+#24 unpacking to docker.io/strangler/catalog:local
+#24 ...
+
+#25 [order] exporting to image
+#25 exporting layers 2.5s done
+#25 exporting manifest sha256:8f43d2abe8be1fb310b2b64ee664e9d49433697da8d0f90e12daab15d57d8b5a 0.0s done
+#25 exporting config sha256:7de4168a41f09ba087f659c4e101943b4640ba15d792c6ade0a72b1582cdf92c 0.0s done
+#25 exporting attestation manifest sha256:cff8b106a21eb10bfa5238750ac64f9003187e322f9ffa2fabd12a6727863e5b 0.0s done
+#25 exporting manifest list sha256:1aced202c97522fad83be5f42bd4906df0e61afeff95ad9a2aa72342e8ccc9bd 0.0s done
+#25 naming to docker.io/strangler/order:local 0.0s done
+#25 unpacking to docker.io/strangler/order:local 0.5s done
+#25 DONE 3.2s
+
+#26 [gateway] exporting to image
+#26 exporting layers 2.5s done
+#26 exporting manifest sha256:e9eb8a2805e9660cbc908fb43d9aa51788e10d42fb7b7fa9c867905c686bef2f 0.0s done
+#26 exporting config sha256:2706d45b1e1f84425c29f63e4b7f71e0e57c5665a65d7ec1c0720565004ea86c 0.0s done
+#26 exporting attestation manifest sha256:72d5c1675cd8bed1dd9b9a963c70d57f00bbd84a44894dabe81664ebdc6ad9a9 0.0s done
+#26 exporting manifest list sha256:7986efa85e0b1c2df98f2ecabd3615b4cfa467fa3e42701ca809b51ac0c16294 0.0s done
+#26 naming to docker.io/strangler/gateway:local 0.0s done
+#26 unpacking to docker.io/strangler/gateway:local 0.5s done
+#26 DONE 3.3s
+
+#24 [catalog] exporting to image
+#24 unpacking to docker.io/strangler/catalog:local 0.5s done
+#24 DONE 3.3s
+
+#27 [legacy] exporting to image
+#27 exporting layers 2.5s done
+#27 exporting manifest sha256:0ddbe9efef2cc7aa00ed0bb406424d970ceadd04ddf90f29ea6116835db2c607 0.0s done
+#27 exporting config sha256:c55b92846b4a7ecee24cfda2433aceb974866c8bb99e248d7af5dc0fcd165966 0.0s done
+#27 exporting attestation manifest sha256:79d4af6c5d55a0e35ca573126ff62d8bd33169a430665b1e1414c00bb6249d2f 0.0s done
+#27 exporting manifest list sha256:d87aab4e7274adcbfea71be7742cbad87fff42d6f0ead4aa8f8ee5255f553a9b 0.0s done
+#27 naming to docker.io/strangler/legacy:local 0.0s done
+#27 unpacking to docker.io/strangler/legacy:local 0.5s done
+#27 DONE 3.3s
+
+#28 [inventory] exporting to image
+#28 exporting layers 2.5s done
+#28 exporting manifest sha256:aa33700911055a60b899201a90ac9bbb06058b9a359d08419a1d6f109b8bcc7f 0.0s done
+#28 exporting config sha256:2b58821a47e453c49f510f29b0826e64e03a289a900cc6c5ad31407392fe7667 0.1s done
+#28 exporting attestation manifest sha256:ef91416c8c4dd79b8da6d8e5b087c45835752f84308ea869c383b21596ba798e 0.0s done
+#28 exporting manifest list sha256:26684b2ea66ea83c9de91531f2f1e517902b57627b03dcf7a7a9e850b3c4f41b 0.0s done
+#28 naming to docker.io/strangler/inventory:local 0.0s done
+#28 unpacking to docker.io/strangler/inventory:local 0.6s done
+#28 DONE 3.4s
+
+#29 [payment] exporting to image
+#29 exporting layers 2.5s done
+#29 exporting manifest sha256:472516e06ee500e27b76ed70b1bec1ab9d4d7ae6473910ecd9a3942a5ef6d941 0.0s done
+#29 exporting config sha256:ed022c2a4de44ac3f17eb93d93da4f1e9074e89ce33d2a83c3a19e92d71f5f1c 0.0s done
+#29 exporting attestation manifest sha256:7c1b6377d0923ebc40453254e3508c270f4791db1d36379d910ff81e6ad24245 0.0s done
+#29 exporting manifest list sha256:57cb350211bd8d0332b5d88971f4f97fbc7558dedcc71f61b3bdf8f3e0b7cdce 0.0s done
+#29 naming to docker.io/strangler/payment:local 0.0s done
+#29 unpacking to docker.io/strangler/payment:local 0.5s done
+#29 DONE 3.4s
+
+#30 [order] resolving provenance for metadata file
+#30 ...
+
+#31 [payment] resolving provenance for metadata file
+#31 DONE 0.3s
+
+#32 [legacy] resolving provenance for metadata file
+#32 DONE 0.3s
+
+#33 [gateway] resolving provenance for metadata file
+#33 DONE 0.1s
+
+#34 [inventory] resolving provenance for metadata file
+#34 DONE 0.2s
+
+#30 [order] resolving provenance for metadata file
+#30 DONE 0.4s
+
+#35 [catalog] resolving provenance for metadata file
+#35 DONE 0.4s
+ Image strangler/catalog:local Built 
+ Image strangler/inventory:local Built 
+ Image strangler/legacy:local Built 
+ Image strangler/payment:local Built 
+ Image strangler/gateway:local Built 
+ Image strangler/order:local Built 

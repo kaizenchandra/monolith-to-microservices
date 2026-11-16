@@ -1,0 +1,44 @@
+[
+  {
+    "service": "legacy",
+    "image_id": "sha256:d87aab4e7274adcbfea71be7742cbad87fff42d6f0ead4aa8f8ee5255f553a9b",
+    "jar_sha256": "846a8131de93f610d8a4135b46a00f0077a0b15ce35346d03d304de2c0501c0f",
+    "matches_verified_build": true,
+    "running": true
+  },
+  {
+    "service": "gateway",
+    "image_id": "sha256:7986efa85e0b1c2df98f2ecabd3615b4cfa467fa3e42701ca809b51ac0c16294",
+    "jar_sha256": "748ce612115a7216856ab14d0548ef26407edf13cc23a7dc8cbb9bf9db284c43",
+    "matches_verified_build": true,
+    "running": true
+  },
+  {
+    "service": "catalog",
+    "image_id": "sha256:8a8db2d695eb31b30c65d6cb079ffbda72fe9902da9e0601a5a8f49186568e79",
+    "jar_sha256": "58e1403ec0d352e277b9efed28ea03521121acc148314f18e097ac125c4156c3",
+    "matches_verified_build": true,
+    "running": true
+  },
+  {
+    "service": "inventory",
+    "image_id": "sha256:26684b2ea66ea83c9de91531f2f1e517902b57627b03dcf7a7a9e850b3c4f41b",
+    "jar_sha256": "3b46b436e222945d20ec89983403da08425360b4a9630aae04636e3d128141bd",
+    "matches_verified_build": true,
+    "running": true
+  },
+  {
+    "service": "order",
+    "image_id": "sha256:1aced202c97522fad83be5f42bd4906df0e61afeff95ad9a2aa72342e8ccc9bd",
+    "jar_sha256": "26e8c8231f996e3b4cf988f4785dfe87a8670b642a7863eae264e03127ac45fa",
+    "matches_verified_build": true,
+    "running": true
+  },
+  {
+    "service": "payment",
+    "image_id": "sha256:57cb350211bd8d0332b5d88971f4f97fbc7558dedcc71f61b3bdf8f3e0b7cdce",
+    "jar_sha256": "d87da4bf87e86c411aacce809cfd27796ea1f9c46caf36bf0f4a60cc000f4320",
+    "matches_verified_build": true,
+    "running": true
+  }
+]

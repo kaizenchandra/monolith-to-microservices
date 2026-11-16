@@ -1,0 +1,26 @@
+[
+  {
+    "service": "legacy",
+    "ready_seconds": 12.671
+  },
+  {
+    "service": "catalog",
+    "ready_seconds": 6.433
+  },
+  {
+    "service": "inventory",
+    "ready_seconds": 5.253
+  },
+  {
+    "service": "payment",
+    "ready_seconds": 5.206
+  },
+  {
+    "service": "order",
+    "ready_seconds": 4.043
+  },
+  {
+    "service": "gateway",
+    "ready_seconds": 4.056
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "capability": "inventory",
+  "source": "legacy",
+  "target": "inventory",
+  "source_digest": "96b91d979faaaabca907c0ee78dc34761c8eea216ec759fd84851aa9524362c6",
+  "target_digest": "96b91d979faaaabca907c0ee78dc34761c8eea216ec759fd84851aa9524362c6",
+  "equal": true,
+  "rows": {
+    "stock": 2,
+    "reservations": 0
+  },
+  "time": 1794760284.625708,
+  "available_sum": 109,
+  "reserved_sum": 0
+}

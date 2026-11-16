@@ -1,0 +1,6 @@
+{
+  "runtime_superuser": false,
+  "cross_database_connect": false,
+  "runtime_create_schema": false,
+  "runtime_product_update": true
+}

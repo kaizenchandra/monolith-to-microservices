@@ -1,0 +1,22 @@
+ Container strangler-demo-payment-1 Stopping 
+ Container strangler-demo-payment-1 Stopped 
+ Container strangler-demo-order-1 Restarting 
+ Container strangler-demo-order-1 Started 
+ Container strangler-demo-postgres-1 Waiting 
+ Container strangler-demo-postgres-1 Healthy 
+ Container strangler-demo-payment-1 Starting 
+ Container strangler-demo-payment-1 Started 
+PASS saga resumes after dependency outage and worker restart
+PASS one reservation after replay
+ Container strangler-demo-kafka-1 Stopping 
+ Container strangler-demo-kafka-1 Stopped 
+PASS state commits while broker unavailable
+ Container strangler-demo-kafka-1 Starting 
+ Container strangler-demo-kafka-1 Started 
+PASS outbox recovers and consumer projects
+PASS duplicate event suppresses duplicate fulfillment
+PASS cutover resumes after source delegation fence
+ Container strangler-demo-postgres-1 Waiting 
+ Container strangler-demo-postgres-1 Waiting 
+ Container strangler-demo-postgres-1 Healthy 
+ Container strangler-demo-postgres-1 Healthy 

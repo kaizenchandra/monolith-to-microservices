@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: { name: commerce }
+data:
+  LEGACY_URL: http://legacy:8081
+  CATALOG_URL: http://catalog:8083
+  INVENTORY_URL: http://inventory:8084
+  ORDER_URL: http://order:8085
+  PAYMENT_URL: http://payment:8086
+  MANAGEMENT_ENDPOINT_HEALTH_GROUP_READINESS_INCLUDE: readinessState,db
+  KAFKA_SERVERS: kafka:9092
+  OTEL_ENDPOINT: http://otel-collector:4318/v1/traces
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: { name: commerce }
+spec:
+  tls:
+    - hosts: [{{ .Values.host }}]
+      secretName: commerce-tls
+  rules:
+    - host: {{ .Values.host }}
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway
+                port: { number: 8082 }
